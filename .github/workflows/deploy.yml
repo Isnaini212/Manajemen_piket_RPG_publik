@@ -1,0 +1,37 @@
+name: Deploy Laravel to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # Ganti jadi 'master' jika branch utama GitHub kamu namanya master
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Install Dependencies (Composer)
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Sync files to InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/
+          dangerous-clean-slug: false  # Kunci pengaman ekstra agar file server tidak terhapus
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/storage/app/public/**
+            **/public/storage/**

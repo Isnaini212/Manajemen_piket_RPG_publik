@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide Alpine-cloaked elements until Alpine initialises */
+[x-cloak] { display: none !important; }
+
+@layer utilities {
+    /* Fonts */
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-pixel { font-family: 'Press Start 2P', monospace; font-size: 0.75rem; line-height: 1rem; }
+
+    /* Accents */
+    .bg-gradient-gold { background: linear-gradient(90deg, #f5c518, #f0a500); }
+    .animate-pulse-red { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    /* Retro 8/16-bit pixel boxes */
+    .pixel-box { border: 2px solid #2d2050; box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.6); }
+    .pixel-btn { border: 2px solid #2d2050; box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.6); transition: all 0.1s ease; }
+    .pixel-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px 0px #000; }
+
+    /* Hide scrollbars */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Keep pixel art crisp */
+    .pixelated { image-rendering: pixelated; shape-rendering: crispEdges; }
+
+    /* Night sky star field — used on body in dashboard & login layouts */
+    .starfield {
+        background-image:
+            radial-gradient(circle, rgba(255,255,255,0.8)  1px, transparent 1px),
+            radial-gradient(circle, rgba(220,200,255,0.55) 1px, transparent 1px),
+            radial-gradient(circle, rgba(255,255,255,0.3)  1px, transparent 1px),
+            radial-gradient(circle, rgba(245,197,24,0.35)  1px, transparent 1px);
+        background-size: 127px 113px, 97px 89px, 61px 67px, 173px 151px;
+        background-position: 0px 0px, 47px 61px, 22px 38px, 83px 29px;
+        background-attachment: fixed;
+    }
+}
