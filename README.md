@@ -40,7 +40,6 @@ Sistem Manajemen Piket Berbasis Gamifikasi menggunakan **Laravel 13** dan **Live
 - **Database**: MySQL / MariaDB / SQLite
 - **Packages**:
   - `barryvdh/laravel-dompdf` (Cetak Laporan PDF)
-  - `maatwebsite/excel` (Ekspor Excel)
   - `intervention/image` (Pemrosesan & Kompresi Foto Bukti)
 
 ---
